@@ -1,19 +1,78 @@
-.whole_screen{
+*{
+    font-family: 'Space Mono', monospace;
+}
+body{
     width: 100%;
     height: 100%;
+    margin: 0px;
+    padding: 0px;
     background-color: beige;
 }
-.box_1 {
-    position: relative;
-    width: 100%;
+header, h2, footer, article, #right-bar{
+    text-align: center;
+}
+.content{
     display: flex;
     flex-direction: row;
-} nav {
-    width: 20%;
+}
+nav, #right-bar {
+    width: 250px;
     background-color: navajowhite;
     font-size: 20px;
-    font-weight: 300;
+    min-width: 250px;
+    border-radius: 15px;
 }
+article{
+    min-width: 300px;
+}
+
+h2{
+    font-size: 35px;
+}
+h3{
+    font-size: 30px;
+}
+
+img{
+}
+ul{
+    padding: 5px 0 5px 20px;
+    position:sticky;
+    top:0px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color:rgb(244, 239, 224);
+}
+li{
+    list-style: none;
+    margin-bottom: 10px;
+}
+#right-bar{
+    padding: 5px 0;
+}
+
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+form input{
+    width: 150px;
+}
+
+section{
+    width: 100%;
+}
+header, footer{
+    background-color: rgb(251, 191, 124);
+}
+
+footer{
+    padding-top: 5px;
+}
+
+/*
 .submit{
     justify-content: center;
     align-items: center;
@@ -27,7 +86,5 @@ mark{
     background-color: #000000;
     color: rgba(255, 255, 255, 1);
 }
-li{
-    list-style: none;
-    margin-bottom: 50px;
-}
+
+*/

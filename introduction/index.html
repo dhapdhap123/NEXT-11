@@ -6,32 +6,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div class="whole_screen">
-    <div style="text-align: center;" class="title">
-        <h1>안녕하세요, 저는 <mark>이영찬</mark>입니다!</h1>
-    </div>
-    <div class="box_1">
-    <nav class="navigation">
-        <ul>
-            <p>네비게이션~~</p>
-            <li><a href="https://github.com/dhapdhap123">Github으로 가봅시다</a></li>
-            <li><a href="https://portal.korea.ac.kr/front/Intro.kpd">고려대학교 포털</a></li>
-            <li><a href="https://post-phinf.pstatic.net/MjAxOTA4MTBfOSAg/MDAxNTY1NDEzMDk4MzQz.oWK3cwFpOic6J7Mmd8pZNE6G_4jhxmYj8Iu_Jz3Xvzcg.c0HA1q4Sl-AfSDm_y676x1ED0VGGL4BEdk8_qodBajwg.JPEG/2w4w02ks9531p3v874c7.jpg?type=w1200">따봉도치!</a></li>
-        </ul>
-    </nav>
-    <div class="body">
-        <img id="DDabongdochi" src="./v4q0b0ff4hcpew1g6t39.jpg" />
+    <div class="container">
+        <header>
+            <h1>My Page</h1>
+        </header>
         
+        <div class="content">
+            <nav>
+                <ul>
+                    <span>Nav</span>
+                    <hr>
+                    <li><a href="#info">기본정보</a></li>
+                    <li><a href="#academic">학력</a></li>
+                    <li><a href="#char">성격</a></li>
+                    <li><a href="#hobby">취미</a></li>
+                    <li><a href="#good_at">특기</a></li>
+                    <li><a href="#reason">NEXT에 들어온 이유</a></li>
+                    <li><a href="#goal">올해 목표</a></li>
+                    <li><a href="#stack">기술 STACK</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <section>
+                <article>
+                    <h2>
+                        안녕하세요, 저는 이영찬입니다!
+                    </h2>
+                    
+                    <h3 id="info">기본정보</h3>
+                    <img src="./images/LYC.jpg" style="width: 300px; height: 360px;" alt="내 사진" />
+                    <p>
+                        저는 고려대학교 <strong>영어교육과</strong> 4학년 재학 중인 18학번 이영찬입니다.<br><br>
+                        부전공으로는 문과대 <strong>LB&C 융합전공</strong>을 선택했습니다.<br><br>
+                        <strong>1999년 1월 23일</strong>에 서울에서 태어났으며 올해 25살입니다. 6월에 1살 어려질 예정<br><br>
+                        현재 본가는 수원에 있고, 경기도에서 운영하는 <strong>경기푸른미래관</strong>에 서식하고 있습니다.<br><br>
+                        좋아하는 색깔은 <mark style="background-color: blue; color: white;">파란색</mark>입니다.
+                    </p>
+                    <hr>
+
+                    <h3 id="academic">학력</h3>
+                    <p>
+                        서울 나무어린이집 (2003 ~ 2006)<br><br>
+                        서울 원묵초등학교 (2006 ~ 2007)<br><br>
+                        서울 동원초등학교 (2007 ~ 2011)<br><br>
+                        수원 칠보중학교 (2012 ~ 2014)<br><br>
+                        안산 동산고등학교 (2015 ~ 2017)<br><br>
+                        서울 고려대학교 (2018 ~ )<br><br>
+                    </p>
+                    <hr>
+
+                    <h3 id="char">성격</h3>
+                    <p>
+                        성격은 어릴 때 내향적이었다가 점점 자라면서 외향적으로 바뀌었습니다.<br><br>
+                        그래도 아직 새로운 사람을 만날 땐 낯을 조금 가리기도 합니다.<br><br>
+                        MBTI는 <strong>ENTP</strong>이며, 새로운 것을 만들고 이에 대해 의견을 나누는 것을 좋아합니다.<br><br>
+                        <img src="./images/entp.jpg" style="width: 200px; height: 240px;" alt="mbti=entp" /><br>
+                        또한 좋아하는 것에는 시간을 아끼지 않는 편이며,<br><br>
+                        <strong>재미</strong>를 제 1 가치로 추구해 무엇을 하든 재밌게 하는 것이 목표입니다.<br><br>
+                    </p>
+                    <hr>
+
+                    <h3 id="hobby">취미</h3>
+                    <p>
+                        <strong>스포츠, 음악, 보드게임, 방탈출</strong>을 좋아합니다.<br><br>
+                        스포츠는 축구를 가장 좋아하며, EPL의 황제인 <mark style="background-color: rgb(0, 221, 255); color: white;">맨체스터 시티</mark>의 팬입니다.<br><br>
+                        좋아하는 선수는 축구의 신인 <mark style="background-color: rgb(0, 162, 255); color: white;">리오넬 메시</mark>입니다.<br><br>
+                        <img src="./images/leo_messi.jpg" alt="leo messi" /> Goat..<br>
+                        음악은 악기연주와 노래 듣고 부르는 것 모두 좋아합니다.<br><br>
+                        악기는 <mark style="background-color: rgb(0, 0, 0); color: white;">피아노, 기타(어쿠스틱/일렉/베이스), 드럼</mark>을 칩니다.<br><br>
+                        <img src="./images/drum.png" style="width:500px; height:350px;" alt="drum" /> 열심히 드럼치고 있는 모습..<br>
+                        보드게임과 방탈출은 친구들과 재밌게 시간을 보낼 수 있는 활동이라 좋아합니다.<br><br>
+                    </p>
+                    <hr>
+                    
+                    <h3 id="good_at">특기</h3>
+                    <p>
+                        특기는 <strong>경청</strong>입니다. 타인의 말을 귀담아듣는 것을 즐기며, 공감을 잘합니다.<br><br>
+                        이를 통해 타인과 저의 대화를 통해 서로간의 의견을 절충하는 의견을 내고,<br><br>
+                        한 집단에서 저의 <mark style="background-color: rgb(134, 0, 0); color: white;" >의견을 내고 논의를 발전시켜 나가는 것</mark>을 좋아하고 즐깁니다.<br><br>
+                        리더로서 집단을 이끄는 것에 가깝다기 보다는, 집단이나 모임에 성실히 참여하며<br><br>
+                        서포트 해주고 그 안에서의 재미와 더 나은 발전방안을 찾는 것에 중점을 두는 편입니다.
+                    </p>
+                    <hr>
+
+                    <h3 id="reason">NEXT에 들어온 이유</h3>
+                    <p>
+                        더 많은 경험을 하고 더 멋진 사람이 되기 위해 NEXT에 들어오게 되었습니다.<br><br>
+                        최근에는 서비스 기획에도 관심이 있는데,<br><br>
+                        <mark style="background-color: rgb(0, 92, 4); color: white;">NEXT에서 멋진 분들과 함께 새로운 경험을 통해 저의 실력을 넓고 깊게 향상시키고 싶습니다.</mark>
+                    </p>
+                    <hr>
+
+                    <h3 id="goal">올해 목표</h3>
+                    <p>
+                        올해 목표는 <mark style="background-color: purple; color: white;">개발/기획을 총체적으로 경험</mark>해 보는 것입니다.<br><br>
+                        또한 마음과 뜻이 맞는 사람들과 함께 <mark style="background-color: purple; color: white;">해커톤이나 프로젝트 등 많은 경험</mark>을 해보고 싶습니다.
+                    </p>
+                    <hr>
+
+                    <h3 id="stack">기술 STACK</h3>
+                    <p>
+                        NEXT에 들어오기 전에 독학으로 4개월 정도 코딩을 공부하고,<br><br>
+                        전에 있던 동아리에서 프로젝트를 한 번 진행했던 경험이 있습니다.<br><br>
+                        능숙하거나 잘하진 못하지만, 경험해봤던 기술로는<br><br>
+                        <mark style="background-color: rgb(41, 8, 255); color: white;">HTML/CSS/JavaScript, React.js, Typescript, Github</mark style=""> 정도 입니다.
+                    </p>
+                </article>
+            </section>
+
+            
+            <div id="right-bar">
+                <form>
+                    <input placeholder="하고 싶은 말"/>
+                    <button id="submit">제출</button>
+                </form>
+            </div>
+            
+
+        </div>
+
+        <footer>
+            <p id="contact"><strong>Contact me</strong><br><br>
+                Email : dhapdhap123@naver.com <br><br>
+                Github : <a href="https://github.com/dhapdhap123" target="_blank">https://github.com/dhapdhap123</a> <br><br>
+                instagram : beige._.seal <br><br>
+            </p>
+        </footer>
     </div>
-    <form class="submit">
-        <input type="text" value="따봉도치야 고마워"/>
-        <button type="submit">제출해봅시다</button>
-    </form>
-    </div>
-</div>
 </body>
 
-<script src="파일경로/myscript1.js" async></script>
 </html>
