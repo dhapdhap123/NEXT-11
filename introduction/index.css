@@ -33,8 +33,6 @@ h3{
     font-size: 30px;
 }
 
-img{
-}
 ul{
     padding: 5px 0 5px 20px;
     position:sticky;
@@ -51,10 +49,12 @@ li{
     padding: 5px 0;
 }
 
-
 a{
     text-decoration: none;
     color: black;
+}
+a:hover{
+    color: white;
 }
 
 form input{
@@ -70,21 +70,5 @@ header, footer{
 
 footer{
     padding-top: 5px;
+    min-width: 100vw;
 }
-
-/*
-.submit{
-    justify-content: center;
-    align-items: center;
-}
-div{
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 3px 3px 3px 3px;
-}
-mark{
-    background-color: #000000;
-    color: rgba(255, 255, 255, 1);
-}
-
-*/

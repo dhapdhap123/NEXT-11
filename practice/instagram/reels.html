@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>instagram</title>
+    <link rel="stylesheet" href="./saved_style.css" />
+  </head>
+  <body>
+    <div id="container"><!--flex 가로 정렬-->
+    <nav id="sidebar"><!--flex 세로 정렬-->
+      <div id="side1">
+        <a class="sidemenu">
+          <div class="icon_div"><img style="height:50px; width:120px;" src="./images/instagram_logo.png" id="icon" alt="icon" /></div>
+        </a>
+      </div>
+
+      <div id="side2">
+        <a class="icon_a sidemenu">
+          <div class="icon_div"><img class="icon" src="./images/home.png" id="home" alt="home" /></div>
+          <p>홈</p>
+        </a>
+        <a class="icon_a sidemenu">
+          <div class="icon_div"><img class="icon" src="./images/search.svg" id="search" alt="search" /></div>
+          <p>검색</p>
+        </a>
+        <a class="icon_a sidemenu">
+          <div class="icon_div"><img class="icon" src="./images/explore.svg" id="explore" alt="explore" /></div>
+          <p>탐색 탭</p>
+          </a>
+        <a class="icon_a sidemenu">
+          <div class="icon_div"><img class="icon" src="./images/reels.png" id="left_reels" alt="left_reels" /></div>
+          <p>릴스</p>
+        </a>
+        <a class="icon_a sidemenu">
+          <div class="icon_div"><img class="icon" src="./images/message.png" id="message" alt="message" /></div>
+          <p>메시지</p>
+        </a>
+        <a class="icon_a sidemenu">
+          <div class="icon_div"><img class="icon" src="./images/notice.svg" id="heart" alt="heart" /></div>
+          <p>알림</p>
+        </a>
+        <a class="icon_a sidemenu">
+          <div class="icon_div"><img class="icon" src="./images/make.svg" id="make" alt="make" /></div>
+          <p>만들기</p>
+        </a>
+        <a class="icon_a sidemenu" >
+          <div class="icon_div"><img class="icon" id="side_profile_img" src="./images/my_profile.jpg" id="my_profile" alt="my_profile" /></div>
+          <p>프로필</p>
+        </a>
+      </div>
+
+      <div id="side3">
+        <a class="icon_a sidemenu">
+          <div class="icon_div"><img class="icon" src="./images/setting.svg" id="my_profile" alt="my_profile" /></div>
+          <p>더 보기</p>
+        </a>
+      </div>
+    </nav>
+
+    <div id="rightbox">
+      <header><!--flex 가로 정렬-->
+        <div id="profile_img">
+          <img id="my_profile_image" src="./images/my_profile.jpg" alt="my_profile_image" />
+        </div>
+        <div id="index_info"><!--flex 세로 정렬-->
+          
+          <div id="box1"><!--flex 가로 정렬-->
+            <div id="name" style="font-size: 20px">beige._.seal</div>
+            <button id="btn_follow">팔로우</button>
+            <button id="btn_suggested"><img src="./images/suggested.svg"/></button>
+            <div id="setting"><img src="./images/dots.svg"/></div>
+          </div>
+
+          <div id="box2"><!--flex 가로 정렬, space-between-->
+            <div class="box2_span"  id="number_content">
+              <span>게시물 <strong>14</strong></span>
+            </div>
+            <div class="box2_span" id="follower">
+              <span>팔로워 <strong>306</strong></span>
+            </div>
+            <div class="box2_span" id="following">
+              <span>팔로우 <strong>292</strong></span>
+            </div>
+          </div>
+
+          <div id="introduction">
+            <p>
+              <span style="font-size: 15px"><strong>이영찬</strong></span><br>
+              <span style="font-size: 14px">Korea Univ. ELED 18</span><br>
+              <span style="font-size: 14px">Dongsan CH. 21</span>
+            </p>
+          </div>
+
+          <div id="following_friend" style="font-size: 12px;">
+            <strong>jjyeong_ch, yun.taeung, sssool_55</strong><span style="color: gray">님 외 54명이 팔로우합니다</span>
+          </div>
+
+        </div>
+      </header>
+
+      <div id="middlebar"><!--flex 가로 정렬-->
+        <a href="./index.html"><div class="middlebar_div" id="contents"><img class="middle_icon" src="./images/contents.png" alt="contents" /><span>게시물</span></div></a>
+        <a href="./reels.html"><div class="middlebar_div" id="reels"><img class="middle_icon" src="./images/reels.png" alt="reels" /><span>릴스</span></div></a>
+        <a href="./tagged.html"><div class="middlebar_div" id="tagged"><img class="middle_icon" src="./images/tagged.png" alt="tagged" /><span>태그됨</span></div></a>
+      </div>
+
+      <section>
+        <article><!--flex 세로 정렬-->
+          <div id="reelsbox"></div>
+        </article>
+      </section>
+
+      <footer>
+        <div id="footer1">
+          <div class="footer_a">Meta</div>
+          <div class="footer_a">소개</div>
+          <div class="footer_a">블로그</div>
+          <div class="footer_a">채용 정보</div>
+          <div class="footer_a">도움말</div>
+          <div class="footer_a">API</div>
+          <div class="footer_a">개인정보처리방침</div>
+          <div class="footer_a">약관</div>
+          <div class="footer_a">인기 계정</div>
+          <div class="footer_a">위치</div>
+          <div class="footer_a">Instagram Lite</div>
+          <div class="footer_a">연락처 업로드 & 비사용자</div>
+          <div class="footer_a">Meta Verified</div>
+        </div>
+        <div id="footer2">
+          <div>
+            한국어
+          </div>
+          <div>
+            © 2023 Instagram from Meta
+          </div>
+        </div>
+        
+      </footer>
+
+    </div>
+  </div>
+  </body>
+</html>
