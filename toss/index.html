@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css" />
+    <title>toss</title>
+</head>
+<body>
+    <div class="container no-scroll"><!--flex 세로 정렬-->
+    
+        <div class="topbar"><!--flex 가로 정렬-->
+            <div id="topbar_1"><img id="logo" src="./images/toss_logo.png" alt="logo" /></div>
+            <div id="topbar_2">
+                <img class="topbar_right_img" id="face" src="./images/face.svg" alt="face" />
+                <img class="topbar_right_img" id="bell" src="./images/bell.png" alt="bell" />
+            </div>
+        </div>
+
+        <section><!--flex 세로 정렬-->
+            <div class="article" id="tossbank">
+                <div class="article_container"> <!--flex 세로 정렬-->
+                    <div class="article_header"> <!--flex 가로 정렬-->
+                        <h1 class="article_leftbox">토스뱅크</h1>
+                        <div class="article_rightbox">
+                            <img id="right_arrow" src="./images/right_arrow.svg" alt="right_arrow" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article" id="budget">
+                <div id="budget_container"><!--flex 세로 정렬-->
+                    <div class="article_container"> <!--flex 세로 정렬-->
+                        
+                        <div class="article_header"> <!--flex 가로 정렬-->
+                            <h1 class="article_leftbox">자산</h1>
+                            <div class="article_rightbox">
+                                <img id="right_arrow" src="./images/right_arrow.svg" alt="right_arrow" />
+                            </div>
+                        </div>
+
+                        <div class="article_contents"><!--flex 세로 정렬-->
+                            <div class="article_div" id="article_1"><!--flex 가로 정렬-->
+                                <div class="article_leftbox"><!--flex 가로 정렬-->
+                                    <div class="account_img_box">
+                                        <img class="account_img" id="toss_icon" src="./images/kakaobank.png" alt="kakaobank" />
+                                    </div>
+                                    <div class="account_box"><!--flex 세로 정렬-->
+                                        <p>카카오뱅크</p>
+                                        <h3>999,999,999원</h3>
+                                    </div>
+                                </div>
+                                <div class="article_rightbox">
+                                    <button>송금</button>
+                                </div>
+                            </div>
+
+                            <div class="article_div" id="article_2">
+                                <div class="article_leftbox">
+                                    <div class="account_img_box">
+                                        <img class="account_img" id="toss_icon" src="./images/toss_icon.png" alt="point&money" />
+                                    </div>
+                                    <div class="account_box">
+                                        <p>포인트・머니・1개</p>
+                                        <h3>1원</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article" id="consume">
+                <div id="consume_container"><!--flex 세로 정렬-->
+                    <div class="article_container"> <!--flex 세로 정렬-->
+                        
+                        <div class="article_header"> <!--flex 가로 정렬-->
+                            <h1 class="article_leftbox">소비</h1>
+                        </div>
+
+                        <div class="article_contents"><!--flex 세로 정렬-->
+                            <div class="article_div" id="article_1"><!--flex 가로 정렬-->
+                                <div class="article_leftbox"><!--flex 가로 정렬-->
+                                    <div class="account_img_box">
+                                        <img class="account_img_no_radius" id="toss_icon" src="./images/receipt.svg" alt="receipt" />
+                                    </div>
+                                    <div class="account_box"><!--flex 세로 정렬-->
+                                        <p>이번 달 쓴 금액</p>
+                                        <h3>5,000,000원</h3>
+                                    </div>
+                                </div>
+                                <div class="article_rightbox">
+                                    <button>내역</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="article" id="invest">
+                <div id="invest_container"><!--flex 세로 정렬-->
+                    <div class="article_container"> <!--flex 세로 정렬-->
+                        
+                        <div class="article_header"> <!--flex 가로 정렬-->
+                            <h1 class="article_leftbox">투자</h1>
+                        </div>
+
+                        <div class="article_contents"><!--flex 세로 정렬-->
+                            <div class="article_div" id="article_1"><!--flex 가로 정렬-->
+                                <div class="article_leftbox"><!--flex 가로 정렬-->
+                                    <div class="account_img_box">
+                                        <img class="account_img" id="toss_icon" src="./images/portfolio.svg" alt="portfolio" />
+                                    </div>
+                                    <div class="account_box"><!--flex 세로 정렬-->
+                                        <p>증권 계좌 연결하고</p>
+                                        <h3>포트폴리오 모아보기</h3>
+                                    </div>
+                                </div>
+                                <div class="article_rightbox">
+                                    <img id="right_arrow" src="./images/right_arrow.svg" alt="right_arrow" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article" id="gathering">
+                <div id="gathering_container"><!--flex 세로 정렬-->
+                    <div class="article_container"> <!--flex 세로 정렬-->
+                        
+                        <div class="article_header"> <!--flex 가로 정렬-->
+                            <h1 class="article_leftbox">모임</h1>
+                            <div class="article_rightbox">
+                                <img id="right_arrow" src="./images/right_arrow.svg" alt="right_arrow" />
+                            </div>
+                        </div>
+
+                        <div class="article_contents"><!--flex 세로 정렬-->
+                            <div class="article_div" id="article_1"><!--flex 가로 정렬-->
+                                <div class="article_leftbox"><!--flex 가로 정렬-->
+                                    <div class="account_img_box">
+                                        <img class="account_img group_icon" src="./images/group.svg" alt="농협" />
+                                    </div>
+                                    <div class="account_box"><!--flex 세로 정렬-->
+                                        <p>KUGODS</p>
+                                        <h3>82,000원</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="article_div" id="article_2">
+                                <div class="article_leftbox">
+                                    <div class="account_img_box">
+                                        <img class="account_img group_icon" src="./images/group.svg" alt="농협" />
+                                    </div>
+                                    <div class="account_box">
+                                        <p>롤을 킨 죄</p>
+                                        <h3>10,000원</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bottom_boxes" class="no-scroll" > <!--좌우 드래그, flex 가로 정렬-->
+                <div class="small_box"> <!--flex 세로 정렬-->
+                    <div class="upper_box"> <!--flex 가로 정렬-->
+                        <p>요즘 인기</p>    
+                        <h3>오늘의<br>머니 팁</h3>
+                    </div>
+                    <div class="lower_box"> <!--flex end 정렬-->
+                        <img class="small_box_img" src="./images/light.svg" />
+                    </div>
+                </div>
+                <div class="small_box"> <!--flex 세로 정렬-->
+                    <div class="upper_box"> <!--flex 가로 정렬-->
+                        <p>집 있다면</p>    
+                        <h3>내 부동산<br>시세 조회</h3>
+                    </div>
+                    <div class="lower_box"> <!--flex end 정렬-->
+                        <img class="small_box_img" src="./images/house.svg" />
+                    </div>
+                </div>
+                <div class="small_box"> <!--flex 세로 정렬-->
+                    <div class="upper_box"> <!--flex 가로 정렬-->
+                        <p>최근</p>    
+                        <h3>돈 같이<br>모으기</h3>
+                    </div>
+                    <div class="lower_box"> <!--flex end 정렬-->
+                        <img class="small_box_img" src="./images/group.svg" />
+                    </div>
+                </div>
+                <div class="small_box"> <!--flex 세로 정렬-->
+                    <div class="upper_box"> <!--flex 가로 정렬-->
+                        <p>인기</p>    
+                        <h3>더보기</h3>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <footer>
+                <div id="footer_container1">
+                    <div class="footer_div footer_container" id="footer_div1">
+                        <img class="footer_img" src="./images/setting.svg" alt="setting" />
+                        <span class="footer_span">화면 설정</span>
+                    </div>
+                    <div class="footer_div footer_container" id="footer_div2">
+                        <img class="footer_img" src="./images/plus.svg" alt="setting" />
+                        <span class="footer_span">자산 추가</span>
+                    </div>
+                </div>
+                <div class="footer_container" id="footer_container2">
+                    개인정보처리방침 보기
+                </div>
+            </footer>
+        </section>
+    </div>
+    <nav><!--flex 가로 정렬-->
+        <div class="nav_box" id="nav_home">
+            <div class="nav_img_box"><img class="nav_img" src="./images/home.png" id="nav_img_home" /></div>
+            <span class="nav_span">홈</span>
+        </div>
+        <div class="nav_box" id="nav_home">
+            <div class="nav_img_box"><img class="nav_img" src="./images/diamond.svg" id="nav_img_home" /></div>
+            <span class="nav_span">혜택</span>
+        </div>
+        <div class="nav_box" id="nav_home">
+            <div class="nav_img_box"><img class="nav_img" src="./images/won.png" id="nav_img_home" /></div>
+            <span class="nav_span">송금</span>
+        </div>
+        <div class="nav_box" id="nav_home">
+            <div class="nav_img_box"><img class="nav_img" src="./images/chart.png" id="nav_img_home" /></div>
+            <span class="nav_span">주식</span>
+        </div>
+        <div class="nav_box" id="nav_home">
+            <div class="nav_img_box"><img class="nav_img" src="./images/menu.svg" id="nav_img_home" /></div>
+            <span class="nav_span">전체</span>
+        </div>
+    </nav>
+</body>
+</html>
