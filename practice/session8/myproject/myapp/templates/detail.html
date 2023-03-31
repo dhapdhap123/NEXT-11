@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'detail.css' %}" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap">
+            <h2>글 자세히 보기</h2>
+            <div class="content">
+            <nav>
+                <span>눌러서 이동</span>
+                <hr>
+                <div><a href="{% url 'list' %}">돌아가기</a></div>
+                <div><a href="{% url 'new' %}">글 쓰러 가기</a></div>
+            </nav>
+            <section>
+                <div class="text_box" id="title"><p class="left">Title</p><p>{{article.title}}</p></div>
+                <div class="text_box" id="category"><p class="left">category</p><p>{{article.category}}</p></div>
+                <div class="text_box" id="content"><p class="left">content</p><p>{{article.content}}</p></div>
+            </section>
+            <div>
+            
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+*{
+    font-family: 'Space Mono', monospace;
+    margin: 0;
+    padding: 0;
+}
+#wrap{
+    width: 70%;
+    height: 100vh;
+    margin: auto;
+    background-color: bisque;
+}
+h2{
+    text-align: center;
+    padding: 10px;
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+nav{
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px; 
+    margin: 15px;
+    width: 20%;
+}
+section{
+    flex-grow: 1;
+    margin: 15px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 15px;
+    height: 100%;
+    width: 80%;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: rgb(142, 142, 142);
+}
+#title{
+    font-size: 2rem;
+}
+.left{
+    border-right: 1px solid black;
+    padding-right: 1rem;
+    margin-right: 1rem;
+}
+.text_box{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+}

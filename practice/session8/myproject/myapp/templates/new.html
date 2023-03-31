@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Article</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap">
+    <h2>글쓰기 페이지</h2>
+    <div class="content">
+        <nav>
+            <span>눌러서 이동</span>
+            <hr>
+            <div><a href="{% url 'list' %}">전체 글 보기</a></div>
+        </nav>
+        <section>
+        <form action="/new" method="post">
+            {% csrf_token %}
+            <div>
+                <div>글 제목</div>
+                <input type="text" name="title" required />
+            </div>
+            <div>
+                <label for="category">개발</label>
+                <select name="category" id="category">
+                    <option value="development">개발</option>
+                    <option value="music">음악</option>
+                    <option value="sports">스포츠</option>
+                </select>
+            </div>
+            <div>
+                <div>글 내용</div>
+                <textarea name="content" cols="30" rows="10" required></textarea>
+            </div>
+            <button type="submit">작성 완료</button>
+        </form>
+    </section>
+    </div>
+    </div>
+</body>
+</html>
