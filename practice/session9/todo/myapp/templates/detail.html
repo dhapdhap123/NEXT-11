@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div id="title_div">
+                <h1><a href="{% url 'home' %}">Todos</a></h1>
+            </div>
+            <div id="btn_div">
+                <a class="btn_a" href="{% url 'update' todo.id %}"><button>수정하기</button></a>
+                <a class="btn_a" href="{%	url 'delete' todo.id %}"><button>삭제하기</button></a>
+            </div>
+        </header>
+        <div id="content">
+            <div id="todo_title">
+                <h2>제목 : </h2>
+                <p>{{todo.title}}</p>
+            </div>
+            <div id="todo_content">
+                <h2>내용 : </h2>
+                <p>{{todo.content}}</p>
+            </div>
+            <div id="todo_daedline">
+                <h2>마감기한 : </h2><p>{{todo.deadline}}</p>
+            </div>
+            <div id="todo_done">
+                {% if todo.done == True %}
+                <h2>완료상태 : </h2>
+                <p>완</p>
+                {% else %}
+                <h2>완료상태 : </h2>
+                <p>미완</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

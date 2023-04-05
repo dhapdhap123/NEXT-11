@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div id="title_div">
+                <h1><a href="{% url 'home' %}">Todos</a></h1>
+            </div>
+            <div id="btn_div">
+                <button><a href="{% url 'new' %}">Todo 작성</a></button>
+            </div>
+        </header>
+        <div id="content">
+            <div id="done_todo">
+                <h2>완료됨</h2>
+                <ul>
+                    {% for todo in done_todo %}
+                    <li>
+                        <a href="{% url 'detail' todo.id %}" style="text-decoration: line-through; color: rgb(180, 180, 180)">
+                            {{todo.title}}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div id="todo">
+                <h2>완료되지 않음</h2>
+                <ul>
+                    {% for todo in todos %}
+                    <li>
+                        {% if todo.outdated == True %}
+                            <a href="{% url 'detail' todo.id %}" style="color: gray">
+                                <span>{{todo.title}}</span>
+                                <span>D-day : {{todo.d_day}} outdated!</span>
+                                <button><a href="{% url 'update' todo.id %}">수정하기</a></button>
+                                <button><a href="{% url 'done' todo.id %}">완료</a></button>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'detail' todo.id %}">
+                                {% if 3 >= todo.d_day and todo.d_day >= 0 %}
+                                    <span id="impending">{{todo.title}}</span>
+                                    <span id="impending">🔥D-day : {{todo.d_day}}🔥</span>
+                                {% else %}
+                                    <span id="not_impending">{{todo.title}}</span>
+                                    <span id="not_impending">D-day : {{todo.d_day}}</span>
+                                {% endif %}
+                            </a>
+                            <button><a href="{% url 'done' todo.id %}">완 료</a></button>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

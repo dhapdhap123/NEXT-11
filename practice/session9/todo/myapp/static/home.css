@@ -1,0 +1,57 @@
+*{
+    font-family: 'Space Mono', monospace;
+    margin: 0;
+    padding: 0;
+}
+#wrap{
+    width: 70%;
+    height: 100vh;
+    margin: auto;
+    background: rgb(234, 224, 254);
+}
+header{
+    padding: 1%;
+    box-sizing: border-box;
+    text-align: center;
+    flex-direction: column;
+    height: 10%;
+    background: rgb(216, 196, 253);
+}
+#title_div{
+    height: 70%;
+}
+#btn_div{
+    height: 30%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+#content{
+    height: 90%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5%;
+}
+#done_todo{
+    margin-bottom: 3%;
+}
+button{
+    border: 0;
+    height: 2rem;
+    width: 5rem;
+    border-radius: 15px;
+}
+.btn_a{margin-left: 1%;}
+button:hover{
+    cursor: pointer;
+}
+a{text-decoration: none; color: black;}
+#impending{color: red}
+#not_impending{color: blue;}
+li{list-style: none; margin: 1%;}
+p{background: white; border: 1px solid black;}
+
+/* 화면 너비 0 ~ 1220px */
+@media (max-width: 1220px){
+    #wrap { width: 100%;}
+}
