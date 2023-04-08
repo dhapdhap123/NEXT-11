@@ -1,34 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'category.css' %}" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>category</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div id="wrap">
-        <h2>{{category}} 글 목록</h2>
-        <div class="content">
-            <nav>
-                <span>눌러서 이동</span>
-                <hr>
-                <div><a href="{% url 'list' %}">전체 글 보기</a></div>
-                <div><a href="{% url 'new' %}">글 쓰러 가기</a></div>
-            </nav>
-            <section>
-                <ul>
-                    {% for article in articles %}
-                    <li><a href="{% url 'detail' article.id %}">{{article.title}}</a></li>
-                    {% endfor %}
-                </ul>
-            </section>
-        </div>
-    </div>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}{{category}}{% endblock title %}
+
+{% block h2 %}{{category}} 글 목록{% endblock h2 %}
+
+{% block nav_content %}
+    <div><a href="{% url 'list' %}">전체 글 보기</a></div>
+{% endblock %}
+
+{% block section %}
+    <ul>
+        {% for article in articles %}
+        <li><a href="{% url 'detail' article.id %}">{{article.title}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock section %}

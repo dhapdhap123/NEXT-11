@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}category{% endblock title %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrap">
+        <h2>{% block h2 %}{% endblock h2 %}</h2>
+        <div class="content">
+            <nav>
+                <span>눌러서 이동</span>
+                <hr>
+                {% block nav_content %}{% endblock nav_content %}
+                <hr>
+                <div><a href="{% url 'new' %}">글 쓰러 가기</a></div>
+            </nav>
+            <section>
+                {% block section %}{% endblock section %}
+            </section>
+        </div>
+        <footer>
+            <div>Contact me : </div>
+            <div>dhapdhap123@naver.com</div>
+            <div>https://github.com/dhapdhap123</div>
+        </footer>
+    </div>
+</body>
+</html>

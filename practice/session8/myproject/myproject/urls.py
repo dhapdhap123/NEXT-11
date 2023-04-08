@@ -23,4 +23,7 @@ urlpatterns = [
     path('list', views.list, name='list'),
     path('detail/<int:article_id>', views.detail, name='detail'),
     path('category/<str:category>', views.category, name='category'),
+    path('delete-comment/<int:article_id>/<int:comment_id>', views.delete_comment, name='delete_comment'),
+    path('create_comment/<int:article_id>', views.create_comment, name='create_comment'),
+    path('create_recomment/<int:article_id>/<int:comment_id>', views.create_recomment, name='create_recomment'),
 ]
