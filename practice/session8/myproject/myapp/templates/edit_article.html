@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
 {% endblock %}
 
-{% block title %}New Article{% endblock title %}
+{% block title %}Edit Article{% endblock title %}
 
 {% block h2 %}글쓰기 페이지{% endblock h2 %}
 
@@ -14,10 +14,10 @@
         {% csrf_token %}
         <div>
             <div>글 제목</div>
-            <input type="text" name="title" required />
+            <input type="text" name="title" required value="{{article.title}}" />
         </div>
         <div>
-            <label for="category">개발</label>
+            <label for="category">{{article.category}}</label>
             <select name="category" id="category">
                 <option value="development">개발</option>
                 <option value="music">음악</option>
@@ -26,7 +26,7 @@
         </div>
         <div>
             <div>글 내용</div>
-            <textarea name="content" cols="30" rows="10" required></textarea>
+            <textarea name="content" cols="30" rows="10" required>{{article.content}}</textarea>
         </div>
         <button type="submit">작성 완료</button>
     </form>

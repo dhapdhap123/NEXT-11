@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+{% endblock %}
+
 {% block title %}{{category}}{% endblock title %}
 
 {% block h2 %}{{category}} 글 목록{% endblock h2 %}
-
-{% block nav_content %}
-    <div><a href="{% url 'list' %}">전체 글 보기</a></div>
-{% endblock %}
 
 {% block section %}
     <ul>

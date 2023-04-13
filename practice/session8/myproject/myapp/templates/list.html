@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+{% endblock %}
+
 {% block title %}detail{% endblock title %}
 
 {% block h2 %}글 전체 보기{% endblock h2 %}
-
-{% block nav_content %}
-    {% for category in categories %}
-     <li><a href="{% url 'category' category %}">{{category}} 게시판</a></li>
-    {% endfor %}
-{% endblock %}
 
 {% block section %}
     {% for article in articles %}

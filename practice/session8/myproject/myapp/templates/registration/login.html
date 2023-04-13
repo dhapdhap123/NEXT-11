@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'registration.css' %}" />
+{% endblock %}
+
+{% block title %}login{% endblock title %}
+
+{% block h2 %}로그인{% endblock h2 %}
+
+{% block section %}
+<div class="registration_box">
+    <form method="POST">{% csrf_token %}
+        <div class="posts_box">
+        {% if error %}
+        <p>{{error}}</p>
+        {% endif %}
+        <input
+            required
+            type="text"
+            name="username"
+            placeholder="아이디"
+            class="registration-input"
+        />
+        <input
+            required
+            type="password"
+            name="password"
+            placeholder="비밀번호"
+            class="registration-input"
+        />
+        </div>
+        <div class="submit_box">
+            <button id="post-button">로그인</button>
+        </div>
+    </form>
+
+</div>
+{% endblock section %}

@@ -19,11 +19,19 @@ from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('new', views.new, name='new'),
-    path('list', views.list, name='list'),
+    path('', views.list, name='home'),
+    path('list/', views.list, name='list'),
+    path('new/', views.new, name='new'),
+    path("delete_article/<int:article_id>/", views.delete_article, name="delete_article"),
+    path("edit_article/<int:article_id>/", views.edit_article, name="edit_article"),
     path('detail/<int:article_id>', views.detail, name='detail'),
     path('category/<str:category>', views.category, name='category'),
     path('delete-comment/<int:article_id>/<int:comment_id>', views.delete_comment, name='delete_comment'),
     path('create_comment/<int:article_id>', views.create_comment, name='create_comment'),
     path('create_recomment/<int:article_id>/<int:comment_id>', views.create_recomment, name='create_recomment'),
+    path('delete_recomment/<int:article_id>/<int:comment_id>', views.delete_recomment, name='delete_recomment'),
+    path("registration/signup/", views.signup, name="signup"),
+    path("registration/login/", views.login, name="login"),
+    path("registration/logout/", views.logout, name="logout"),
+    
 ]

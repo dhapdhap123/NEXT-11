@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +8,50 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    {% block css %} {% endblock css %}
 </head>
 <body>
     <div id="wrap">
+        <nav id="navbar">
+            <div id="left_box">
+                <div class="navbar__logo">
+                <a href="{% url 'list' %}">My Blog</a>
+                </div>
+            </div>
+            <div id="right_box">
+                <ul class="navbar__menu">
+                <li class="navbar__menu__item">
+                    <a href="{% url 'new' %}">New</a>
+                </li>
+                <li class="navbar__menu__item">
+                    <a href="{% url 'list' %}">Home</a>
+                </li>
+                {% if user.is_authenticated %}
+                <span class="navbar__menu__item">안녕, {{user.username}}</span>
+                <li class="navbar__menu__item">
+                    <a href="{% url 'logout' %}" >로그아웃</a>
+                </li>
+                {% else %}
+                <li class="navbar__menu__item">
+                    <a href="{% url 'login' %}" >로그인</a>
+                </li>
+                <li class="navbar__menu__item">
+                    <a href="{% url 'signup' %}" >회원가입</a>
+                </li>
+                {% endif %}
+                </ul>
+            </div>
+          </nav>
         <h2>{% block h2 %}{% endblock h2 %}</h2>
         <div class="content">
-            <nav>
+            <aside>
                 <span>눌러서 이동</span>
+                <hr>             
+                    <li><a href="{% url 'category' 'development' %}">development 게시판</a></li>
+                    <li><a href="{% url 'category' 'music' %}">music 게시판</a></li>
+                    <li><a href="{% url 'category' 'sports' %}">sports 게시판</a></li>
                 <hr>
-                {% block nav_content %}{% endblock nav_content %}
-                <hr>
-                <div><a href="{% url 'new' %}">글 쓰러 가기</a></div>
-            </nav>
+            </aside>
             <section>
                 {% block section %}{% endblock section %}
             </section>
