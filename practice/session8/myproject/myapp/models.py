@@ -22,8 +22,8 @@ class Comment(models.Model):
     
 class Recomment(models.Model):
     content = models.TextField()
-    parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', default=1)
+    parent_comment = models.ForeignKey(Comment, on_delete=models.CASCADE, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recomments', default=1)
     
     def __str__(self):
         return self.content
