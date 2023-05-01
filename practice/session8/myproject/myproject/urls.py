@@ -16,14 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp import views
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.list, name='home'),
-    path('list/', views.list, name='list'),
+    path('', views.home, name='home'),
     path('detail/<int:article_id>/', views.detail, name='detail'),
     path('detail/<int:article_id>/<str:error>/', views.detail, name='detail_with_error'),
-    path('category/<str:category>', views.category, name='category'),
+    path('category/<str:category>/', views.category, name='category'),
 
     path('new/', views.new, name='new'),
     path("edit_article/<int:article_id>/", views.edit_article, name="edit_article"),
@@ -37,4 +37,6 @@ urlpatterns = [
     path("registration/signup/", views.signup, name="signup"),
     path("registration/login/", views.login, name="login"),
     path("registration/logout/", views.logout, name="logout"),
+
+    path('accounts/', include('allauth.urls')),
 ]

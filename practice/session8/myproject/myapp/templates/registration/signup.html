@@ -11,30 +11,28 @@
 
 {% block section %}
 <div class="registration_box">
-    <form method="POST">
-        {% csrf_token %}
-        <div class="posts_box">
+  <div class = "login_wrap">
+    <form class="login_form" method="POST">
+      {% csrf_token %}
           {% if error %}
-          <p>{{error}}</p>
+            <div style="color: red">{{error}}</div>
           {% endif %}
           <input
             required
             type="text"
             name="username"
             placeholder="아이디"
-            class="registration-input"
+            class="registration_input"
           />
           <input
-             required
+            required
             type="password"
             name="password"
             placeholder="비밀번호"
-            class="registration-input"
+            class="registration_input"
           />
-        </div>
-        <div class="submit_box">
-          <button id="post-button">회원가입</button>
-        </div>
+          <button id="post_button">회원가입</button>
       </form>
+    </div>
 </div>
 {% endblock section %}

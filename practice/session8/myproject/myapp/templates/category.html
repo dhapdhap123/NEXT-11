@@ -10,9 +10,17 @@
 {% block h2 %}{{category}} 글 목록{% endblock h2 %}
 
 {% block section %}
+    {% if not articles %}
+        게시물이 없습니다.
+    {% endif %}
+    
     <ul>
         {% for article in articles %}
-        <li><a href="{% url 'detail' article.id %}">{{article.title}}</a></li>
+        <li>
+            <a href="{% url 'detail' article.id %}">
+                {{ article.title }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
 {% endblock section %}

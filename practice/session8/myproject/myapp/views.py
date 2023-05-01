@@ -19,8 +19,8 @@ def signup(request):
             return render(request, 'registration/signup.html', {"error":error})
 
         new_user = User.objects.create_user(username=username, password=password)
-        auth.login(request, new_user)
-        return redirect('list')        
+        auth.login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
+        return redirect('home')
 
     return render(request, 'registration/signup.html')
 
@@ -32,7 +32,7 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
 
         if user is not None:
-            auth.login(request, user)
+            auth.login(request, user, backend ="django.contrib.auth.backends.ModelBackend")
             return redirect(request.GET.get('next', '/'))
         else:
             error = '아이디 또는 비밀번호가 틀립니다'
@@ -42,7 +42,7 @@ def login(request):
 
 def logout(request):
    auth.logout(request)
-   return redirect('list')
+   return redirect('home')
 
 @login_required(login_url="/registration/login/")
 def new(request):
@@ -53,34 +53,39 @@ def new(request):
             content = request.POST['content'],
             author=request.user
         )
-        return redirect('list')
+        return redirect('home')
     
     return render(request, 'new.html')
 
 def edit_article(request, article_id):
     article = Article.objects.get(id=article_id)
-    if request.method == 'POST':
-        Article.objects.filter(pk = article_id).update(
-            title = request.POST['title'],
-            category = request.POST['category'],
-            content = request.POST['content'],
-            author=request.user
-        )
-        return redirect('detail', article_id)
-    return render(request, 'edit_article.html', {'article': article})
+    if article.author == request.user:
+        if request.method == 'POST':
+            Article.objects.filter(id = article_id).update(
+                title = request.POST['title'],
+                category = request.POST['category'],
+                content = request.POST['content'],
+                author=request.user
+            )
+            return redirect('detail', article_id)
+        return render(request, 'edit_article.html', {'article': article, 'article_id':article_id})
+    else:
+        error = "자신의 게시글만 변경할 수 있습니다."
+        return redirect('detail_with_error', article_id=article_id, error=error)
+    
 
 def delete_article(request, article_id):
     article = Article.objects.get(id=article_id)
     if article.author == request.user:
         article.delete()
-        return redirect('list')
+        return redirect('home')
     else:
         error = "자신의 게시글만 삭제할 수 있습니다."
         return redirect('detail_with_error', article_id=article_id, error=error)
 
-def list(request):
+def home(request):
     articles = Article.objects.all()
-    return render(request, 'list.html', {'articles': articles})
+    return render(request, 'home.html', {'articles': articles})
 
 @login_required(login_url="/registration/login/")
 def detail(request, article_id, error=None):
@@ -110,9 +115,8 @@ def create_comment(request, article_id):
     return render(request, 'detail.html', {'article': article})
 
 def delete_comment(request, article_id, comment_id):
-    article = Article.objects.get(id=article_id)
-    if article.author == request.user:
-        comment = Comment.objects.get(pk=comment_id)
+    comment = Comment.objects.get(id=comment_id)
+    if comment.author == request.user:
         comment.delete()
         return redirect('detail', article_id)
     else:
@@ -133,9 +137,8 @@ def create_recomment(request, article_id, comment_id):
     return render(request, 'detail.html', {'article': article})
 
 def delete_recomment(request, article_id, recomment_id):
-    article = Article.objects.get(id=article_id)
-    if article.author == request.user:
-        recomment = Recomment.objects.get(id = recomment_id)
+    recomment = Recomment.objects.get(id=recomment_id)
+    if recomment.author == request.user:
         recomment.delete()
         return redirect('detail', article_id)
     else:

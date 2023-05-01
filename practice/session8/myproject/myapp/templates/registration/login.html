@@ -2,6 +2,8 @@
 
 {% block css %}
 {% load static %}
+{% load account socialaccount %}
+{% providers_media_js %}
 <link rel="stylesheet" type="text/css" href="{% static 'registration.css' %}" />
 {% endblock %}
 
@@ -11,30 +13,47 @@
 
 {% block section %}
 <div class="registration_box">
-    <form method="POST">{% csrf_token %}
-        <div class="posts_box">
-        {% if error %}
-        <p>{{error}}</p>
-        {% endif %}
-        <input
-            required
-            type="text"
-            name="username"
-            placeholder="아이디"
-            class="registration-input"
-        />
-        <input
-            required
-            type="password"
-            name="password"
-            placeholder="비밀번호"
-            class="registration-input"
-        />
+    <div class="login_wrap">
+        <form class="login_form" method="POST">
+        {% csrf_token %}
+            {% if error %}
+            <p>{{error}}</p>
+            {% endif %}
+            <input
+                required
+                type="text"
+                name="username"
+                placeholder="아이디"
+                class="registration_input"
+            />
+            <input
+                required
+                type="password"
+                name="password"
+                placeholder="비밀번호"
+                class="registration_input"
+            />
+            <button id="post_button">로그인</button>
+        </form>
+        <hr />
+        <div class="social_div">
+            <form class="social_form" method = "POST" action="{% provider_login_url 'kakao' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                <input type = "hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+                <button style="font-family:monospace" class = "primaryAction" type="submit">Continue with kakao</button>
+            </form>
+            <form class="social_form" method = "POST" action="{% provider_login_url 'google' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                <input type = "hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+                <button style="font-family:monospace" class = "primaryAction" type="submit">Continue with google</button>
+            </form>
         </div>
-        <div class="submit_box">
-            <button id="post-button">로그인</button>
-        </div>
-    </form>
-
+    </div>
 </div>
 {% endblock section %}

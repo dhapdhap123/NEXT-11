@@ -15,6 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+LOGIN_REDIRECT_URL = '/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -27,7 +28,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTHENTICATION_BACKENDS = [
+# Needed to login by username in Django admin, regardless of `allauth`
+'django.contrib.auth.backends.ModelBackend',
+# `allauth` specific authentication methods, such as login by e-mail
+'allauth.account.auth_backends.AuthenticationBackend',
+]
+SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +45,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+
+    'django.contrib.sites',
+    #Django-allauth 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # provider (kakao, google)
+    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.google',
+
 ]
 
 MIDDLEWARE = [
