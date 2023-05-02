@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+{% endblock css %}
+
+{% block title %}detail{% endblock title %}
+
+{% block section %}
+<section class="featured-posts">
+    <div class="section-title">
+        <h2><span>Detail</span></h2>
+    </div>
+    {% if error %}
+        <div style="color: red">{{error}}</div>
+    {% endif %}
+    <h1>제목 : {{article.title}}</h1>
+    <h2>내용 : {{article.content}}</h2>
+    <h5>작성자 : {{article.author}}</h5>
+    <h5>작성일시 : {{article.create_dt}}</h5>
+    <h5>최종수정일시 : {{article.update_dt}}</h5>
+    <a href="{% url 'blog:update_article' article.pk %}" style="color:blue">수정</a>
+    <a href="{% url 'blog:delete_article' article.pk %}" style="color:red">삭제</a>
+
+    <hr>
+    <form method="post" action="{% url 'blog:create_comment' article.pk %}">
+        {% csrf_token %}
+        <input type="text" name="content" placeholder="댓글을 입력해주세요." />
+        <button type="submit">작성하기</button>
+    </form>
+    <hr>
+    {% for comment in comments %}
+        <div class="comment">
+            <div class="comment_left">{{comment}}</div>
+            <div class="comment_right">
+                <div class="comment_div">{{comment.author}}</div>
+                <div class="comment_div">{{comment.create_dt}}</div>
+                <div class="comment_div"><a href="{% url 'blog:update_comment' article.pk comment.pk %}" style="color:blue">수정</a></div>
+                <div class="comment_div"><a href="{% url 'blog:delete_comment' article.pk comment.pk %}" style="color:red">삭제</a></div>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+{% endblock section %}

@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+{% endblock css %}
+
+{% block title %}new{% endblock title %}
+
+{% block section %}
+    <section class="featured-posts">
+        <form action="" method="post" style="display: flex; flex-direction: column;">
+            {% csrf_token %}
+            <input type="text" name="title" id="title" placeholder="제목 입력"/>
+            <textarea name="content" id="content" placeholder="내용 입력"></textarea>
+            <button type="submit">작성</button>
+        </form>
+    </section>
+{% endblock section %}

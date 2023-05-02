@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+{% endblock css %}
+
+{% block title %}signup{% endblock title %}
+
+{% block section %}
+    <section class="featured-posts">
+        <div class="section-title">
+            <h2><span>Sign up</span></h2>
+        </div>
+        {% if error %}
+            <p>{{error}}</p>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            {{	form.as_p }}    
+            <button type="submit">회원가입</button>
+        </form>
+    </section>
+{% endblock section %}

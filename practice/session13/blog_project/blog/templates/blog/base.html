@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="assets/img/favicon.ico">
+<title>{% block title %}{% endblock title %}</title>
+<!-- Bootstrap core CSS -->
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/base.css' %}" />
+<!-- Fonts -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{% static 'blog/mediumish.css' %}" rel="stylesheet">
+{% block css %} {% endblock css %}
+</head>
+
+<body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'blog:home' %}">My Blog</a>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'blog:create_article' %}">New</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog:home' %}">Home</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="nav-link">안녕, {{user.username}}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:logout' %}" >로그아웃</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:login' %}" >로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:signup' %}" >회원가입</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div> 
+        </div>
+    </nav>
+    <div class="container">
+        {% block section %} {% endblock section %}
+
+        <div class="footer">
+            <p class="pull-left">
+                 Copyright &copy; 2023 MyBlog
+            </p>
+            <p class="pull-right">
+                Github <a target="_blank" href="https://github.com/dhapdhap123">https://github.com/dhapdhap123</a>
+            </p>
+            <div class="clearfix">
+            </div>
+        </div>    
+    </div>
+</body>
+</html>

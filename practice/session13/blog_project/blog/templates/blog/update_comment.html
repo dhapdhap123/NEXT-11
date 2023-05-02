@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+{% endblock css %}
+
+{% block title %}update{% endblock title %}
+
+{% block section %}
+    <section class="featured-posts">
+        <div class="section-title">
+            <h2><span>Update Comment</span></h2>
+        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <p>댓글 내용</p><textarea name="content" placeholder="댓글 내용 입력">{{comment.content}}</textarea>
+            <p>작성자 : {{comment.author}}</p>
+            <p>작성일자 : {{comment.create_dt}}</p>
+            <button type="submit">수정</button>
+        </form>
+    </section>
+{% endblock section %}
