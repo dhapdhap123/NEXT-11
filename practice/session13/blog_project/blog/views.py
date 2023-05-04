@@ -1,22 +1,28 @@
 from django.shortcuts import render, redirect
-from .models import Article, Comment
+from .models import Article, Comment, Profile
 
 from django.contrib.auth.decorators import login_required
 
 def home(request):
     articles = Article.objects.all()
 
-    return render(request, 'blog/home.html', {'articles': articles})
+    sort_by = request.GET.get('sort_by', 'default_value')
+    if sort_by == 'date':
+        articles = Article.objects.all().order_by('create_dt')
+    elif sort_by == 'reverse_date':
+        articles = Article.objects.all().order_by('-create_dt')
+    elif sort_by == 'title':
+        articles = Article.objects.all().order_by('title')
+    elif sort_by == 'reverse_title':
+        articles = Article.objects.all().order_by('-title')
+    return render(request, 'blog/home.html', {'articles': articles, 'sort_by': sort_by})
 
 @login_required
-def detail(request, article_id, error=None):
+def detail(request, article_id):
     article = Article.objects.get(id=article_id)
     comments = Comment.objects.filter(article = article)
 
-    if error:
-        return render(request, 'blog/detail.html', {'article': article, 'comments': comments, 'error': error})
-    else:
-        return render(request, 'blog/detail.html', {'article': article, 'comments': comments})
+    return render(request, 'blog/detail.html', {'article': article, 'comments': comments})
 
 @login_required
 def create_article(request):
@@ -42,6 +48,7 @@ def update_article(request, article_id):
         return render(request, 'blog/update_article.html', {'article': article})
     else:
         error = "자신의 게시글만 수정할 수 있습니다."
+        return render(request, 'blog/detail.html', {'article_id':article_id, 'error':error})
         return redirect('blog:detail_with_error', article_id=article_id, error=error)
     
 @login_required
@@ -52,6 +59,7 @@ def delete_article(request, article_id):
         return redirect('blog:home')
     else:
         error = "자신의 게시글만 삭제할 수 있습니다."
+        return render(request, 'blog/detail.html', {'article_id':article_id, 'error': error})
         return redirect('blog:detail_with_error', article_id=article_id, error=error)
 
 @login_required    
@@ -72,6 +80,7 @@ def delete_comment(request, article_id, comment_id):
         return redirect('blog:detail', article_id=article_id)
     else:
         error = "자신의 댓글만 삭제할 수 있습니다."
+        return render(request, 'blog/detail.html', {'article_id':article_id, 'error': error})
         return redirect('blog:detail_with_error', article_id=article_id, error=error)
 
 @login_required    
@@ -85,4 +94,12 @@ def update_comment(request, article_id, comment_id):
         return render(request, 'blog/update_comment.html', {'comment': comment})
     else:
         error = "자신의 댓글만 수정할 수 있습니다."
+        return render(request, 'blog/detail.html', {'article_id':article_id, 'error': error})
         return redirect('blog:detail_with_error', article_id=article_id, error=error)
+
+@login_required 
+def author_article(request, author_id):
+    author = Profile.objects.get(id=author_id)
+    articles = Article.objects.filter(author=author)
+
+    return render(request, 'blog/author_article.html', {'articles': articles, 'author': author})

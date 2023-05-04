@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+{% endblock css %}
+
+{% block title %}home{% endblock title %}
+
+{% block section %}
+    <section class="featured-posts">
+        <div class="section-title">
+            <h2><span>{{author}}'s Articles</span></h2>
+        </div>
+        
+        <div class="card-columns listfeaturedtag">
+            {% for article in articles %}
+            <div class="card">
+                <a href="{%	url 'blog:detail' article.pk %}">
+                        <div class="card-block">
+                        <h3>{{article}}</h3>
+                        <p>{{article.content}}</p>
+                        <p>작성자 : {{article.author}}</p>
+                        <p>{{article.create_dt}}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock section %}
