@@ -88,10 +88,7 @@
     const id = e.target.id
     try {
       const res = await axios.post('/delete_comment/' + "{{post.pk}}/" + `${id}`)
-
-      console.log(res)
       const {comment_pk} = res.data
-
       const commentBoxDeleted = e.target.parentNode
       commentBoxDeleted.remove()
     }
