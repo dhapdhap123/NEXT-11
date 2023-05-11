@@ -7,14 +7,12 @@ let li_num = 0;
 const onDeleteTodo = (e) => {
   const todos = window.localStorage.getItem("todos");
   const todos_parsed = JSON.parse(todos);
-  // [1, 2, 3]
   const li_id = e.target.id;
   for (i in todos_parsed) {
     if (i === li_id) {
       todos_parsed.splice(i, 1);
     }
   }
-  console.log(todos_parsed);
   const li_delete = document.getElementById(`${li_id}li`);
   li_delete.remove();
   window.localStorage.setItem("todos", JSON.stringify(todos_parsed));
