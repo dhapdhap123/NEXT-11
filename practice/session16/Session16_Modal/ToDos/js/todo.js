@@ -7,9 +7,17 @@ let li_num = 0;
 const onDeleteTodo = (e) => {
   const todos = window.localStorage.getItem("todos");
   const todos_parsed = JSON.parse(todos);
+  // [1, 2, 3]
+  const li_id = e.target.id;
   for (i in todos_parsed) {
-    console.log(i);
+    if (i === li_id) {
+      todos_parsed.splice(i, 1);
+    }
   }
+  console.log(todos_parsed);
+  const li_delete = document.getElementById(`${li_id}li`);
+  li_delete.remove();
+  window.localStorage.setItem("todos", JSON.stringify(todos_parsed));
 };
 
 const renderTodos = () => {
@@ -17,6 +25,7 @@ const renderTodos = () => {
   const todos_parsed = JSON.parse(todos);
   for (i in todos_parsed) {
     const li = document.createElement("li");
+    li.id = li_num + "li";
     li.innerHTML = `<span id=${li_num}>${todos_parsed[i]}</span><button id=${li_num} onclick="onDeleteTodo(event)">X</button>`;
     todoList.appendChild(li);
     li_num += 1;
@@ -35,7 +44,8 @@ const onCreateTodo = (e) => {
   window.localStorage.setItem("todos", JSON.stringify(new_todos));
 
   const li = document.createElement("li");
-  li.innerHTML = `<span id=${li_num}>${new_todo}</span><button id=${li_num} onclick="onDeleteTodo()">X</button>`;
+  li.id = li_num + "li";
+  li.innerHTML = `<span id=${li_num}>${new_todo}</span><button id=${li_num} onclick="onDeleteTodo(event)">X</button>`;
   li_num += 1;
   todoList.appendChild(li);
 
