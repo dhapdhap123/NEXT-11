@@ -2,9 +2,14 @@ const todoForm = document.getElementById("todo-form");
 const todoList = document.getElementById("todo-list");
 const submitBtn = document.querySelector(".submitBtn");
 
+let li_num = 0;
+
 const onDeleteTodo = (e) => {
-  e.preventDefault();
-  console.log("삭제");
+  const todos = window.localStorage.getItem("todos");
+  const todos_parsed = JSON.parse(todos);
+  for (i in todos_parsed) {
+    console.log(i);
+  }
 };
 
 const renderTodos = () => {
@@ -12,8 +17,9 @@ const renderTodos = () => {
   const todos_parsed = JSON.parse(todos);
   for (i in todos_parsed) {
     const li = document.createElement("li");
-    li.innerHTML = `<span>${todos_parsed[i]}</span><button onClick="onDeleteTodo">X</button>`;
+    li.innerHTML = `<span id=${li_num}>${todos_parsed[i]}</span><button id=${li_num} onclick="onDeleteTodo(event)">X</button>`;
     todoList.appendChild(li);
+    li_num += 1;
   }
 };
 
@@ -29,7 +35,8 @@ const onCreateTodo = (e) => {
   window.localStorage.setItem("todos", JSON.stringify(new_todos));
 
   const li = document.createElement("li");
-  li.innerText = new_todo;
+  li.innerHTML = `<span id=${li_num}>${new_todo}</span><button id=${li_num} onclick="onDeleteTodo()">X</button>`;
+  li_num += 1;
   todoList.appendChild(li);
 
   content.value = "";
