@@ -20,3 +20,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+    
+class Image(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="images")
+    file = models.URLField(max_length=2000)
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='images', default=1)
+    create_dt = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.file

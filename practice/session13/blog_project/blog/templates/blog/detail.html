@@ -20,6 +20,12 @@
     <h5>작성자 : <a href="{% url 'blog:author_article' article.author.pk %}">{{article.author}}</a></h5>
     <h5>작성일시 : {{article.create_dt}}</h5>
     <h5>최종수정일시 : {{article.update_dt}}</h5>
+    <h5>이미지</h5>
+    <div>
+        {% for image in images %}
+            <img src="{{image.file}}" style="height: 264px; width: 264px;" />
+        {% endfor %}
+    </div>
     <a href="{% url 'blog:update_article' article.pk %}" style="color:blue">수정</a>
     <a href="{% url 'blog:delete_article' article.pk %}" style="color:red">삭제</a>
 
@@ -36,8 +42,8 @@
             <div class="comment_right">
                 <div class="comment_div">{{comment.author}}</div>
                 <div class="comment_div">{{comment.create_dt}}</div>
-                <div class="comment_div"><a href="{% url 'blog:update_comment' article.pk comment.pk %}" style="color:blue">수정</a></div>
-                <div class="comment_div"><a href="{% url 'blog:delete_comment' article.pk comment.pk %}" style="color:red">삭제</a></div>
+                <div class="comment_div"><a href="{% url 'blog:update_comment' article_id=article.pk comment_id=comment.pk %}" style="color:blue">수정</a></div>
+                <div class="comment_div"><a href="{% url 'blog:delete_comment' article_id=article.pk comment_id=comment.pk %}" style="color:red">삭제</a></div>
             </div>
         </div>
     {% endfor %}

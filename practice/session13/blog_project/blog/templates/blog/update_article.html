@@ -12,11 +12,143 @@
         <div class="section-title">
             <h2><span>Update Article</span></h2>
         </div>
-        <form action="" method="post">
+        <form action="" method="post" onsubmit="onSubmit(event)" style="display: flex; flex-direction: column;">
             {% csrf_token %}
             <input type="text" name="title" id="title" placeholder="제목 입력" value="{{article.title}}"/>
             <textarea name="content" id="content" placeholder="내용 입력">{{article.content}}</textarea>
-            <button type="submit">작성</button>
+            <label for="imageUpload">Choose an image:</label><br />
+            <input
+                type="file"
+                id="imageUpload"
+                name="get_file"
+                accept="image/*"
+                onchange="onChange(event)"
+            />
+            <ul class="images_li" style="display: flex;"></ul>
+            <button type="submit">수정</button>
         </form>
     </section>
 {% endblock section %}
+{% block script %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    const imageLi = document.querySelector('.images_li');
+    let files = [];
+    let first_files = [];
+    let delete_files = [];
+
+    const convertURLtoFile = async (url) => {
+        const response = await fetch(url);
+        const data = await response.blob();
+        const ext = url.split(".").pop(); // url 구조에 맞게 수정할 것
+        const filename = url.split("/").pop(); // url 구조에 맞게 수정할 것
+        const metadata = { type: `image/${ext}` };
+        const newFile = new File([data], filename, metadata);
+        const newObject = {};
+        newObject[`${filename}`] = newFile;
+        files.push(newObject);
+        first_files.push(filename);
+    }
+    const images = JSON.parse("{{ images | escapejs }}")
+    
+    for (i in images){
+        convertURLtoFile(images[i].fields.file);
+    };
+    setTimeout(() => {
+        renderImg();
+    }, 1000);
+
+    const onChange = (e) => {
+        const image_file = e.target.files[0]
+        addFile(e, image_file)
+        e.target.value = '';
+    }
+
+    const addFile = (e, file) => {
+        if (files.length < 3){
+            const newObject = {};
+            newObject[`${file.name}`] = file;
+            files.push(newObject);
+            renderImg();
+        } else {
+            alert('이미지는 세 개까지 첨부 가능합니다!')
+        }
+    }
+
+    const renderImg = () => {
+        imageLi.innerHTML = '';
+        files.map((file, index) => {
+            for (key in file){
+                const reader = new FileReader();
+
+                reader.onload = function () {
+                    const li = document.createElement('li');
+                    const img = document.createElement('img');
+                    const delete_btn = document.createElement('input');
+
+                    img.src = reader.result;
+                    img.width = '264';
+                    img.height = '264';
+                    img.style.display = "block";
+                    delete_btn.type = "button"
+                    delete_btn.value = "삭제";
+                    delete_btn.id = `btn_${index+1}`;
+                    delete_btn.onclick = onDelete;
+
+                    li.style.marginLeft = '10px';
+                    li.appendChild(img);
+                    li.appendChild(delete_btn);
+                    li.id = `image_${index+1}`;
+
+                    imageLi.appendChild(li);
+                };
+
+                reader.readAsDataURL(file[key]);      
+            }
+        })
+    }
+
+    const onDelete = (e) => {
+        e.preventDefault();
+        const btn_id = e.target.id
+        const id = btn_id.split('_')[1]
+        
+        const deletedFile = files.find(file => (files.indexOf(file) + 1) === Number(id));
+        const deletedKey = Object.keys(deletedFile)[0];
+        if (first_files.indexOf(deletedKey) !== -1) {
+            delete_files.push(deletedKey);
+        }
+        const newFiles = files.filter(file => (files.indexOf(file) + 1) !== Number(id));
+        files = newFiles
+        renderImg();
+    }
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        const form = document.querySelector('form');
+        const formData = new FormData(form);
+
+        if (files) {
+            files.map((file) => {
+                for (key in file){
+                    formData.append('images', file[key], `${key}`);
+                }
+            })
+        }
+        if (delete_files){
+            for (i in delete_files){
+                formData.append('delete_images', delete_files[i]);
+            }
+        }
+        
+        const article_id = "{{ article.id }}";
+        const res = await axios.post(`/blog/update_article/${article_id}`, formData);
+
+        // if (res.data.article_id){
+        //     console.log(res.data.article_id);
+        //     const article_id = res.data.article_id;
+        //     window.location = `/blog/detail/${article_id}`;
+        // }
+    }
+</script>
+{% endblock %}
