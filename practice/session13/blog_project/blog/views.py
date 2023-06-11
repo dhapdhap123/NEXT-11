@@ -22,6 +22,7 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 def home(request):
     articles = Article.objects.all()
+    images = Image.objects.all()
 
     sort_by = request.GET.get('sort_by', 'default_value')
     if sort_by == 'date':
@@ -32,7 +33,7 @@ def home(request):
         articles = Article.objects.all().order_by('title')
     elif sort_by == 'reverse_title':
         articles = Article.objects.all().order_by('-title')
-    return render(request, 'blog/home.html', {'articles': articles, 'sort_by': sort_by})
+    return render(request, 'blog/home.html', {'articles': articles, 'sort_by': sort_by, 'images': images})
 
 @login_required
 def detail(request, article_id):

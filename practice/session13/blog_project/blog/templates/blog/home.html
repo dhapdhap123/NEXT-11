@@ -2,7 +2,7 @@
 
 {% block css %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/home.css' %}" />
 {% endblock css %}
 
 {% block title %}home{% endblock title %}
@@ -32,11 +32,18 @@
             {% for article in articles %}
             <div class="card">
                 <a href="{%	url 'blog:detail' article.pk %}">
-                        <div class="card-block">
+                    <div class="card-block">
                         <h3>{{article}}</h3>
                         <p>{{article.content}}</p>
                         <p>작성자 : {{article.author}}</p>
                         <p>{{article.create_dt}}</p>
+                    </div>
+                    <div class="image-block">
+                        {% if article.images.all %}
+                            {% for image in article.images.all %}
+                                <img class="preview_image" src="{{image.file}}" alt="preview_image" />
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </a>
             </div>

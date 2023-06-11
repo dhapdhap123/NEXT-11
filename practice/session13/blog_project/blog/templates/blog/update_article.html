@@ -144,11 +144,11 @@
         const article_id = "{{ article.id }}";
         const res = await axios.post(`/blog/update_article/${article_id}`, formData);
 
-        // if (res.data.article_id){
-        //     console.log(res.data.article_id);
-        //     const article_id = res.data.article_id;
-        //     window.location = `/blog/detail/${article_id}`;
-        // }
+        if (res.data.article_id){
+            alert('수정되었습니다!');
+            const article_id = res.data.article_id;
+            window.location = `/blog/detail/${article_id}`;
+        }
     }
 </script>
 {% endblock %}

@@ -48,7 +48,6 @@
         } else {
             alert('이미지는 세 개까지 첨부 가능합니다!')
         }
-        console.log(files);
     }
 
     const renderImg = () => {
@@ -102,10 +101,10 @@
                formData.append('images', files[i], `img_${i+1}`);
             }
         }
-        alert('입력되었습니다!');
         const res = await axios.post("/blog/create_article/", formData);
 
         if (res.data.article_id){
+            alert('입력되었습니다!');
             const article_id = res.data.article_id;
             window.location = `/blog/detail/${article_id}`;
         }
