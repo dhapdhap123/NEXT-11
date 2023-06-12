@@ -24,7 +24,7 @@
     <h5>이미지</h5>
     <div>
         {% for image in images %}
-            <img class="image" src="{{image.file}}" />
+            <img class="s3_image" src="{{image.file}}" />
         {% endfor %}
     </div>
     <a href="{% url 'blog:update_article' article.pk %}" style="color:blue">수정</a>
