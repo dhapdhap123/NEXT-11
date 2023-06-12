@@ -1,0 +1,14 @@
+ul{
+	list-style-type: none;
+}
+li{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+#imageUpload{
+    margin-bottom: 10px;
+}
+.delete_btn{
+    margin-top: 5px;
+}

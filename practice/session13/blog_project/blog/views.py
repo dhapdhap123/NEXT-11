@@ -33,6 +33,9 @@ def home(request):
         articles = Article.objects.all().order_by('title')
     elif sort_by == 'reverse_title':
         articles = Article.objects.all().order_by('-title')
+    else:
+        articles = articles.order_by('-create_dt')
+
     return render(request, 'blog/home.html', {'articles': articles, 'sort_by': sort_by, 'images': images})
 
 @login_required
@@ -196,6 +199,8 @@ def author_article(request, author_id):
         articles = articles.order_by('title')
     elif sort_by == 'reverse_title':
         articles = articles.order_by('-title')
+    else:
+        articles = articles.order_by('-create_dt')
 
     return render(request, 'blog/author_article.html', {'articles': articles, 'author': author, 'sort_by': sort_by})
 

@@ -16,21 +16,21 @@
         
         <div class="sort_div">
             {% if sort_by == 'date' %}
-                <a href="{% url 'blog:author_article' author.pk %}?sort_by=reverse_date">역날짜순 정렬</a>
-                <a href="{% url 'blog:author_article' author.pk %}?sort_by=title">제목순 정렬</a>
+                <a href="{% url 'blog:home' %}?sort_by=reverse_date">최신순</a>
+                <a href="{% url 'blog:home' %}?sort_by=title">제목순</a>
                 {% elif sort_by == 'reverse_date' %}
-                <a href="{% url 'blog:author_article' author.pk %}?sort_by=date">날짜순 정렬</a>
-                <a href="{% url 'blog:author_article' author.pk %}?sort_by=title">제목순 정렬</a>
+                <a href="{% url 'blog:home' %}?sort_by=date">오래된순</a>
+                <a href="{% url 'blog:home' %}?sort_by=title">제목순</a>
                 {% elif sort_by == 'title' %}
-                <a href="{% url 'blog:author_article' author.pk %}?sort_by=date">날짜순 정렬</a>
-                <a href="{% url 'blog:author_article' author.pk %}?sort_by=reverse_title">역제목순 정렬</a>
+                <a href="{% url 'blog:home' %}?sort_by=date">최신순</a>
+                <a href="{% url 'blog:home' %}?sort_by=reverse_title">역제목순</a>
                 {% elif sort_by == 'reverse_title' %}
-                <a href="{% url 'blog:author_article' author.pk %}?sort_by=date">날짜순 정렬</a>
-                <a href="{% url 'blog:author_article' author.pk %}?sort_by=title">제목순 정렬</a>
+                <a href="{% url 'blog:home' %}?sort_by=date">최신순</a>
+                <a href="{% url 'blog:home' %}?sort_by=title">제목순</a>
                 {% else %}
-                <a href="{% url 'blog:author_article' author.pk %}?sort_by=date">날짜순 정렬</a>
-                <a href="{% url 'blog:author_article' author.pk %}?sort_by=title">제목순 정렬</a>
-                {% endif %}
+                <a href="{% url 'blog:home' %}?sort_by=date">오래된순</a>
+                <a href="{% url 'blog:home' %}?sort_by=title">제목순</a>
+            {% endif %}
             </div>
 
         <div class="card-columns listfeaturedtag">

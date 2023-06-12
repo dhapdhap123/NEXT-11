@@ -3,6 +3,7 @@
 {% block css %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'blog/base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/create_article.css' %}" />
 {% endblock css %}
 
 {% block title %}new{% endblock title %}
@@ -16,7 +17,7 @@
             {% csrf_token %}
             <input type="text" name="title" id="title" placeholder="제목 입력"/>
             <textarea name="content" id="content" placeholder="내용 입력"></textarea>
-            <label for="imageUpload">Choose an image:</label><br />
+            <label for="imageUpload">Choose an image:</label>
             <input
                 type="file"
                 id="imageUpload"
@@ -66,6 +67,7 @@
                 img.style.display = "block";
                 delete_btn.type = "button"
                 delete_btn.value = "삭제";
+                delete_btn.classList.add('delete_btn')
                 delete_btn.id = `btn_${i+1}`;
                 delete_btn.onclick = onDelete;
 
