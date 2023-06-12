@@ -11,7 +11,6 @@ body {
 	padding:1rem 0rem;
 }
 a{
-	display: flex;
 	text-decoration: none;
 	color: black;
 }
@@ -28,10 +27,9 @@ section {
 }
 .section-title h2 {
 	border-bottom:1px solid rgba(0,0,0,.15);
-	margin-bottom:25px;
+	margin-bottom:15px;
 	font-weight:700;
 	font-size:1.4rem;
-	margin-bottom:27px;
 }
 .section-title span {
 	border-bottom:1px solid rgba(0,0,0,.44);

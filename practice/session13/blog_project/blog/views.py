@@ -187,7 +187,17 @@ def author_article(request, author_id):
     author = Profile.objects.get(id=author_id)
     articles = Article.objects.filter(author=author)
 
-    return render(request, 'blog/author_article.html', {'articles': articles, 'author': author})
+    sort_by = request.GET.get('sort_by', 'default_value')
+    if sort_by == 'date':
+        articles = articles.order_by('create_dt')
+    elif sort_by == 'reverse_date':
+        articles = articles.order_by('-create_dt')
+    elif sort_by == 'title':
+        articles = articles.order_by('title')
+    elif sort_by == 'reverse_title':
+        articles = articles.order_by('-title')
+
+    return render(request, 'blog/author_article.html', {'articles': articles, 'author': author, 'sort_by': sort_by})
 
 
 

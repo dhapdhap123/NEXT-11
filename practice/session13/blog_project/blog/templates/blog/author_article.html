@@ -2,7 +2,8 @@
 
 {% block css %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/author_article.css' %}" />
 {% endblock css %}
 
 {% block title %}home{% endblock title %}
@@ -13,15 +14,43 @@
             <h2><span>{{author}}'s Articles</span></h2>
         </div>
         
+        <div class="sort_div">
+            {% if sort_by == 'date' %}
+                <a href="{% url 'blog:author_article' author.pk %}?sort_by=reverse_date">역날짜순 정렬</a>
+                <a href="{% url 'blog:author_article' author.pk %}?sort_by=title">제목순 정렬</a>
+                {% elif sort_by == 'reverse_date' %}
+                <a href="{% url 'blog:author_article' author.pk %}?sort_by=date">날짜순 정렬</a>
+                <a href="{% url 'blog:author_article' author.pk %}?sort_by=title">제목순 정렬</a>
+                {% elif sort_by == 'title' %}
+                <a href="{% url 'blog:author_article' author.pk %}?sort_by=date">날짜순 정렬</a>
+                <a href="{% url 'blog:author_article' author.pk %}?sort_by=reverse_title">역제목순 정렬</a>
+                {% elif sort_by == 'reverse_title' %}
+                <a href="{% url 'blog:author_article' author.pk %}?sort_by=date">날짜순 정렬</a>
+                <a href="{% url 'blog:author_article' author.pk %}?sort_by=title">제목순 정렬</a>
+                {% else %}
+                <a href="{% url 'blog:author_article' author.pk %}?sort_by=date">날짜순 정렬</a>
+                <a href="{% url 'blog:author_article' author.pk %}?sort_by=title">제목순 정렬</a>
+                {% endif %}
+            </div>
+
         <div class="card-columns listfeaturedtag">
             {% for article in articles %}
             <div class="card">
-                <a href="{%	url 'blog:detail' article.pk %}">
-                        <div class="card-block">
+                <a class="card_link" href="{%	url 'blog:detail' article.pk %}">
+                    <div class="card-block">
                         <h3>{{article}}</h3>
                         <p>{{article.content}}</p>
                         <p>작성자 : {{article.author}}</p>
                         <p>{{article.create_dt}}</p>
+                    </div>
+                    <div class="image-block">
+                        {% if article.images.all %}
+                            {% for image in article.images.all %}
+                            <div class="preview_div">
+                                <img class="preview_image" src="{{image.file}}" alt="preview_image" />
+                            </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </a>
             </div>

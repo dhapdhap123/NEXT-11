@@ -2,7 +2,8 @@
 
 {% block css %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/detail.css' %}" />
 {% endblock css %}
 
 {% block title %}detail{% endblock title %}
@@ -23,7 +24,7 @@
     <h5>이미지</h5>
     <div>
         {% for image in images %}
-            <img src="{{image.file}}" style="height: 264px; width: 264px;" />
+            <img class="image" src="{{image.file}}" />
         {% endfor %}
     </div>
     <a href="{% url 'blog:update_article' article.pk %}" style="color:blue">수정</a>
